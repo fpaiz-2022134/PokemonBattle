@@ -1,0 +1,3 @@
+public enum TipoEfecto {
+    AUMENTA_ATAQUE, AUMENTA_DEFENSA, LASTIMAR_ENEMIGO
+}

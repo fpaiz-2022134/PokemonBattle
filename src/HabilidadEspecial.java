@@ -3,7 +3,6 @@ import java.util.Random;
 public class HabilidadEspecial {
 
     private String nombre;
-    private enum TipoEfecto{ VALORES, AUMENTA_ATAQUE, AUMENTA_DEFENSA, LASTIMAR_ENEMIGO};
     private TipoEfecto efecto;
     private int valor;
     private int probabilidad;
@@ -16,23 +15,20 @@ public class HabilidadEspecial {
         this.efecto = efecto;
         this.valor = valor;
         this.probabilidad = probabilidad;
+        this.random = new Random();
     }
 
     public boolean intentarActivacion(){
-        random = new Random();
         int numeroRandom = random.nextInt(100);
 
-        //If the number is the same or over 50 it's going to be valid.
 
-        if(numeroRandom >= this.probabilidad){
-            return  true;
-        }
-
-        return false;
+        return numeroRandom <= probabilidad;
 
     }
 
-    // public void aplicarEfecto(){}
+    public void aplicarEfecto(Pokemon pokemon){
+        pokemon.activarEfectoHabilidad();
+    }
 
 
     public String getNombre() {
