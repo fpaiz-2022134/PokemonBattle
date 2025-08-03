@@ -21,7 +21,6 @@ public class HabilidadEspecial {
     public boolean intentarActivacion(){
         int numeroRandom = random.nextInt(100);
 
-
         return numeroRandom <= probabilidad;
 
     }
