@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -10,18 +11,20 @@ public class Main {
 
     public void inicializarDatos() {
         Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        int rangoProbabilidad = random.nextInt(11) + 30;
 
         // Creating special abilities
-        HabilidadEspecial llamaFinal = new HabilidadEspecial("Llama Final", TipoEfecto.AUMENTA_ATAQUE, 15, 30);
-        HabilidadEspecial escudoNatural = new HabilidadEspecial("Escudo Natural", TipoEfecto.AUMENTA_DEFENSA, 20, 25);
-        HabilidadEspecial impactoRelampago = new HabilidadEspecial("Impacto Relámpago", TipoEfecto.LASTIMAR_ENEMIGO, 10, 35);
-        HabilidadEspecial tormentaAcuatica = new HabilidadEspecial("Tormenta Acuática", TipoEfecto.AUMENTA_ATAQUE, 12, 40);
-        HabilidadEspecial fogonazo = new HabilidadEspecial("Fogonazo", TipoEfecto.LASTIMAR_ENEMIGO, 8, 45);
-        HabilidadEspecial barreraVerde = new HabilidadEspecial("Barrera Verde", TipoEfecto.AUMENTA_DEFENSA, 18, 20);
-        HabilidadEspecial rayoMortal = new HabilidadEspecial("Rayo Mortal", TipoEfecto.LASTIMAR_ENEMIGO, 15, 25);
-        HabilidadEspecial mareaAlta = new HabilidadEspecial("Marea Alta", TipoEfecto.AUMENTA_ATAQUE, 10, 50);
-        HabilidadEspecial trueno = new HabilidadEspecial("Trueno", TipoEfecto.LASTIMAR_ENEMIGO, 12, 40);
-        HabilidadEspecial llamarada = new HabilidadEspecial("Llamarada", TipoEfecto.AUMENTA_ATAQUE, 14, 35);
+        HabilidadEspecial llamaFinal = new HabilidadEspecial("Blaze", TipoEfecto.AUMENTA_ATAQUE, 15, rangoProbabilidad);
+        HabilidadEspecial escudoNatural = new HabilidadEspecial("Overgrow", TipoEfecto.AUMENTA_DEFENSA, 20, rangoProbabilidad);
+        HabilidadEspecial impactoRelampago = new HabilidadEspecial("Static", TipoEfecto.LASTIMAR_ENEMIGO, 10, rangoProbabilidad);
+        HabilidadEspecial tormentaAcuatica = new HabilidadEspecial("Torrent", TipoEfecto.AUMENTA_ATAQUE, 12, rangoProbabilidad);
+        HabilidadEspecial fogonazo = new HabilidadEspecial("Flash Fire", TipoEfecto.LASTIMAR_ENEMIGO, 8, rangoProbabilidad);
+        HabilidadEspecial barreraVerde = new HabilidadEspecial("Chlorophyll", TipoEfecto.AUMENTA_DEFENSA, 18, rangoProbabilidad);
+        HabilidadEspecial rayoMortal = new HabilidadEspecial("Volt Absorb", TipoEfecto.LASTIMAR_ENEMIGO, 15, rangoProbabilidad);
+        HabilidadEspecial mareaAlta = new HabilidadEspecial("Intimidate", TipoEfecto.AUMENTA_ATAQUE, 10, rangoProbabilidad);
+        HabilidadEspecial trueno = new HabilidadEspecial("Static", TipoEfecto.LASTIMAR_ENEMIGO, 12, rangoProbabilidad);
+        HabilidadEspecial llamarada = new HabilidadEspecial("Run Away", TipoEfecto.AUMENTA_ATAQUE, 14, rangoProbabilidad);
 
         // Pokemons available
         ArrayList<Pokemon> pokemonDisponibles = new ArrayList<>();
@@ -36,14 +39,14 @@ public class Main {
         pokemonDisponibles.add(new Pokemon("Raichu", TipoPokemon.ELECTRICO, 40, 34, trueno));
         pokemonDisponibles.add(new Pokemon("Rapidash", TipoPokemon.FUEGO, 43, 36, llamarada));
 
-        System.out.println("=== BIENVENIDO AL COMBATE POKEMON ===");
+        System.out.println("    Bienvenido al COMBATE POKEMON       ");
         System.out.println();
 
         // Name of the coaches
-        System.out.print("Ingresa el nombre del primer entrenador: ");
+        System.out.print("Escribe el nombre del primer entrenador: ");
         String nombreEntrenador1 = scanner.nextLine();
 
-        System.out.print("Ingresa el nombre del segundo entrenador: ");
+        System.out.print("Escribe el nombre del segundo entrenador: ");
         String nombreEntrenador2 = scanner.nextLine();
 
         // Creating the trainers
@@ -78,9 +81,9 @@ public class Main {
 
             int seleccion;
             do {
-                System.out.print("Ingresa el número del Pokémon: ");
+                System.out.print("Escribe número del Pokémon: ");
                 seleccion = scanner.nextInt();
-                scanner.nextLine(); // Consumir el salto de línea
+                scanner.nextLine();
 
                 if (seleccion < 1 || seleccion > pokemonDisponibles.size()) {
                     System.out.println("El número no es válido, intenta otra vez.");
@@ -105,9 +108,9 @@ public class Main {
 
         for (int i = 0; i < pokemonDisponibles.size(); i++) {
             Pokemon p = pokemonDisponibles.get(i);
-            String estado = seleccionados.contains(i) ? " [YA SELECCIONADO]" : "";
+            String estado = seleccionados.contains(i) ? " [Ya está seleccionado]" : "";
 
-            System.out.printf("%2d. %-12s (%s) - ATK: %2d, DEF: %2d - %s%s%n",
+            System.out.printf("%2d. %-12s (%s) - ATAQUE: %2d, DEFENSA: %2d - %s%s%n",
                     (i + 1),
                     p.getNombre(),
                     p.getTipo(),
@@ -137,12 +140,12 @@ public class Main {
     }
 
     private void mostrarEquipo(Entrenador entrenador) {
-        System.out.println("\n=== EQUIPO DE " + entrenador.getNombre().toUpperCase() + " ===");
+        System.out.println("\n     Equipo de " + entrenador.getNombre().toUpperCase() + " ---");
         ArrayList<Pokemon> equipo = entrenador.getPokemones();
 
         for (int i = 0; i < equipo.size(); i++) {
             Pokemon p = equipo.get(i);
-            System.out.printf("%d. %-12s (%s) - ATK: %2d, DEF: %2d - %s%n",
+            System.out.printf("%d. %-12s (%s) - ATAQUE: %2d, DEFENSA: %2d - %s%n",
                     (i + 1),
                     p.getNombre(),
                     p.getTipo(),

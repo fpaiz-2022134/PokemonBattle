@@ -37,6 +37,7 @@ public class Combate {
     }
 
     public void ejecutarRonda(){
+        System.out.println("    ");
         System.out.println("        RONDA " + rondaActual + "       ");
 
         // Choosing trainer's Pokémon
@@ -55,7 +56,7 @@ public class Combate {
         int ataque2 = pokemon2.calcularAtaqueTotal(pokemon1);
 
         //Seeing the results
-        System.out.println("        RESULTS     ");
+        System.out.println("        Resultados     ");
         System.out.println("Ataque total de " + pokemon1.getNombre() + ":" + ataque1);
         System.out.println("Ataque total de " + pokemon2.getNombre() + ":" + ataque2);
 
@@ -92,7 +93,7 @@ public class Combate {
         ArrayList<Pokemon> disponibles = entrenador.getPokemonesDisponibles();
         for(int i = 0; i < disponibles.size(); i++){
             Pokemon pok = disponibles.get(i);
-            String estado = pok.isEfectoHabilidadActivo() ? " EFECTO HABILIDAD ACTIVO": " ";
+            String estado = pok.isEfectoHabilidadActivo() ? " Efecto de habilidad activo": " ";
             System.out.println((i+1) + ". " + pok.getNombre() + " - " + pok.getTipo() + " - ATAQUE: "+ pok.getAtaque() + " Estado: " + estado);
         }
 
@@ -137,7 +138,7 @@ public class Combate {
     }
 
     private void determinarGanadorCombate() {
-        System.out.println("\n      RESULTADOS FINALES      ");
+        System.out.println("\n      RESULTADOS FINALES    ");
         System.out.println("Rondas ganadas:");
         System.out.println(entrenador1.getNombre() + ": " + ganadasEntrenador1);
         System.out.println(entrenador2.getNombre() + ": " + ganadasEntrenador2);
