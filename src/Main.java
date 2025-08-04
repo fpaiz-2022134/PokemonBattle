@@ -1,3 +1,13 @@
+/*
+ * Developer: Franco Alejandro Paiz González  25780
+ * Course: POO
+ * psdt: I tried to modularize the classes as much as I
+ * could and the game flow in main so I added a couple
+ * of extra methods in main for your use.
+ *
+ * My project on GITHUB:
+ * https://github.com/fpaiz-2022134/PokemonBattle.git
+ * */
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
