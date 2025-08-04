@@ -120,7 +120,7 @@ public class Combate {
                 System.out.println("La habilidad " + pokemon.getHabilidadEspecial().getNombre() + "ha sido activada.");
                 return true;
             }else{
-                System.out.println("La habilidad no se activó :/");
+                System.out.println("La habilidad no se activó  debido a que no alcanzaste el porcentaje de " + pokemon.getHabilidadEspecial().getProbabilidad() +"% :/");
             }
         }
         return false;
